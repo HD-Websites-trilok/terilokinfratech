@@ -1,0 +1,1 @@
+web: gunicorn trilok.wsgi --log-file -
