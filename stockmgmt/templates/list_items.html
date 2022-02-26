@@ -8,7 +8,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
     <title>Home</title>
@@ -48,7 +47,7 @@
         }
 
         body {
-            /* background-color: #14436d; */
+            background-color: #14436d;
         }
 
 
@@ -65,93 +64,9 @@
 <body>
 
     {% include 'navbar.html' %}
-    <!-- <div class="header">{{header}}</div>
-    <div class="row"> -->
-            <form method="Post" action=''>{% csrf_token %}
-                {{form|crispy}}
-                <input class="btn btn-primary mybutton" type="submit" value='Search'>
-            </form>
-    <div class="flex flex-col">
-        <div class="row">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-              <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
-                  <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>COUNT</th></th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>CATEGORY</th></th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>ITEM NAME</th></th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>QUANTITY IN STORE</th></th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>LAST UPDATED</th></th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>DELETE</th></th>
-                    <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th> -->
-                    <th scope="col" class="relative px-6 py-3">
-                      <span class="sr-only">Edit</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    {% for instance in queryset %}
-                  <tr>
-                    <!-- <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="flex items-center">
-                        <div class="flex-shrink-0 h-10 w-10">
-                                    <tr>
-                        </div>
-                        <div class="ml-4">
-                          <div class="text-sm font-medium text-gray-900">Jane Cooper</div>
-                          <div class="text-sm text-gray-500">jane.cooper@example.com</div>
-                        </div>
-                      </div>
-                    </td> -->
-                    <!-- <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                      <div class="text-sm text-gray-500">Optimization</div>
-                    </td> -->
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> <td>{{forloop.counter}}</td> </span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"><td>{{instance.category}}</td>
-                      </span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> <td><a href="{% url 'update_items' instance.id %}">{{instance.item_name}}</a></td>                  </span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">                                     
-                        
-                        <td><a href="{% url 'stock_detail' instance.id %}">{{instance.quantity}}</a></td>
-                    </div>
-                    </span>
-                    </td>
-                    <!-- <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  <td><a href="{% url 'reorder_level' instance.id %}">{{instance.reorder_level}}</a></td>
-                      </span>
-                    </td> -->
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> <td>{{instance.last_updated}}</td> </span>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> <td><a href="{% url 'delete_items' instance.id %}"><img src="{% static 'img/de.png' %}"> </a></td> </span>
-                    </td>
-                  
-                  </tr>
-                  {% endfor %}
-      
-                  <!-- More people... -->
-                </tbody>
-              </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    <!-- <main role="main" class="container">
+    <!-- <img src="{% static 'img/bg-image.jpg' %}"> -->
+
+    <main role="main" class="container">
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
@@ -180,6 +95,7 @@
                 <br>
                 <div class="col-sm-10">
                     <div class="display_table">
+                    <div style="overflow-x:auto;">
                         <table class='table'>
                             <thead>
                                 <tr>
@@ -189,10 +105,10 @@
                                     <th>QUANTITY IN STORE</th>
                                     <th>REORDER LEVEL</th>
                                     <!-- <th>TIMESTAMP</th> -->
-                                    <!-- <th>LAST UPDATED</th>
-                                    <th>DELETE</th> -->
+                                    <th>LAST UPDATED</th>
+                                    <th>DELETE</th>
 
-                                <!-- </tr>
+                                </tr>
                             </thead>
 
                             {% for instance in queryset %}
@@ -208,19 +124,20 @@
                     {% else %}
                     <a href="{% url 'stock_detail' instance.id %}">{{instance.quantity}}</a>
                     {% endif %}
-                    </td> -->
-                    <!-- <td><a href="{% url 'reorder_level' instance.id %}">{{instance.reorder_level}}</a></td> -->
+                    </td>
+                    <td><a href="{% url 'reorder_level' instance.id %}">{{instance.reorder_level}}</a></td>
                     <!-- <td>{{instance.timestamp}}</td> -->
-                    <!-- <td>{{instance.last_updated}}</td>
+                    <td>{{instance.last_updated}}</td>
                     <td><a href="{% url 'delete_items' instance.id %}"><img src="{% static 'img/de.png' %}"> </a></td>
                     </tr>
-                    {% endfor %} -->
-                    <!-- </table>
+                    {% endfor %}
+                    </table>
+                </div>
                 </div>
             </div>
         </div>
-        </div> -->
-    <!-- </main> --> 
+        </div>
+    </main>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -247,86 +164,3 @@
         width: 100%;
     }
 </style>
-
-
-
-
-<!-- This example requires Tailwind CSS v2.0+ -->
-<!-- <div class="flex flex-col">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
-              <tr>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>COUNT</th></th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>CATEGORY</th></th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>ITEM NAME</th></th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>QUANTITY IN STORE</th></th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>LAST UPDATED</th></th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><th>DELETE</th></th> -->
-                <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th> -->
-                <!-- <th scope="col" class="relative px-6 py-3">
-                  <span class="sr-only">Edit</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                {% for instance in queryset %}
-              <tr> -->
-                <!-- <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-                                <tr>
-                    </div>
-                    <div class="ml-4">
-                      <div class="text-sm font-medium text-gray-900">Jane Cooper</div>
-                      <div class="text-sm text-gray-500">jane.cooper@example.com</div>
-                    </div>
-                  </div>
-                </td> -->
-                <!-- <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
-                  <div class="text-sm text-gray-500">Optimization</div>
-                </td> -->
-                <!-- <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> <td>{{forloop.counter}}</td> </span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"><td>{{instance.category}}</td>
-                  </span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> <td><a href="{% url 'update_items' instance.id %}">{{instance.item_name}}</a></td>                  </span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">                                     
-                    
-                    <td><a href="{% url 'stock_detail' instance.id %}">{{instance.quantity}}</a></td>
-                </div>
-                </span>
-                </td> -->
-                <!-- <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  <td><a href="{% url 'reorder_level' instance.id %}">{{instance.reorder_level}}</a></td>
-                  </span>
-                </td> -->
-                <!-- <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> <td>{{instance.last_updated}}</td> </span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> <td><a href="{% url 'delete_items' instance.id %}"><img src="{% static 'img/de.png' %}"> </a></td> </span>
-                </td>
-              
-              </tr>
-              {% endfor %} -->
-  
-              <!-- More people... -->
-            <!-- </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-   -->

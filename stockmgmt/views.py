@@ -174,3 +174,13 @@ def list_history(request):
 		"queryset": queryset,
 	}
 	return render(request, "list_history.html",context)
+
+@login_required
+def team(request):
+	# header = 'LIST OF HISTORY'
+	queryset = StockHistory.objects.all()
+	context = {
+		"header": header,
+		"queryset": queryset,
+	}
+	return render(request, "team.html",context)
