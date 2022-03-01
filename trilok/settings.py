@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-%&77^l+7f9j9@9my$wnm0%ci0cfr7ohie)@#f95f#!+^sgr)m%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'trilok.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'stockmgmt',
-        'USER': 'trilok',
-        'PASSWORD': 'dhansukh',
+        'USER': 'postgres',
+        'PASSWORD': 'harvil@2717',
     }
 }
 
