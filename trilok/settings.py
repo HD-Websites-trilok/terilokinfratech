@@ -92,6 +92,14 @@ DATABASES = {
         'PASSWORD': 'harvil@2717',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'stockmgmt',
+#         'USER': 'trilok',
+#         'PASSWORD': 'dhansukh',
+#     }
+# }
 
 
 
