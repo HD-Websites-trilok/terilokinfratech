@@ -16,4 +16,3 @@ sudo==1.0.0
 tzdata==2021.5
 virtualenv==20.13.1
 waitress==2.0.0
-whitenoise==6.0.0
