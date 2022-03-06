@@ -84,17 +84,19 @@ WSGI_APPLICATION = 'trilok.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'stockmgmt',
-        'USER': 'postgres',
-        'PASSWORD': 'harvil@2717',
-        'HOST': 'localhost',
-        'PORT': ''
-    }
-}
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'stockmgmt',
+#         'USER': 'postgres',
+#         'PASSWORD': 'harvil@2717',
+#         'HOST': 'localhost',
+#         'PORT': ''
+#     }
+# }
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 
 
