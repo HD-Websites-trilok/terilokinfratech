@@ -151,3 +151,6 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+import django_heroku
+django_heroku.settings(locals())
