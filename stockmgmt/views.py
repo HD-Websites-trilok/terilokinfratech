@@ -107,12 +107,23 @@ def issue_items(request, pk):
 	form = IssueForm(request.POST or None, instance=queryset)
 	if form.is_valid():
 		instance = form.save(commit=False)
-		instance.receive_quantity = 0
+		# instance.receive_quantity = 0
 		instance.quantity -= instance.issue_quantity
 		instance.issue_by = str(request.user)
 		# instance.issue_by = str(request.user)
 		messages.success(request, "Issued SUCCESSFULLY. " + str(instance.quantity) + " " + str(instance.item_name) + "s now left in Store")
 		instance.save()
+		issue_history = StockHistory(
+			id = instance.id,
+			last_updated = instance.last_updated,
+			category = instance.category,
+			item_name = instance.item_name,
+			quantity = instance.quantity,
+			issue_to = instance.issue_to,
+			issue_by = instance.issue_by,
+			issue_quantity = instance.issue_quantity,
+		)
+		issue_history.save()
 
 		return redirect('/stock_detail/'+str(instance.id))
 		# return HttpResponseRedirect(instance.get_absolute_url())
@@ -132,16 +143,26 @@ def receive_items(request, pk):
 	form = ReceiveForm(request.POST or None, instance=queryset)
 	if form.is_valid():
 		instance = form.save(commit=False)
-		instance.issue_quantity = 0
+		# instance.issue_quantity = 0
 		instance.quantity += instance.receive_quantity
 		instance.receive_by = str(request.user)
 		instance.save()
+		issue_history = StockHistory(
+			id = instance.id,
+			last_updated = instance.last_updated,
+			category = instance.category,
+			item_name = instance.item_name,
+			quantity = instance.quantity,
+			receive_quantity = instance.receive_quantity,
+			receive_by = instance.receive_by
+		)
+		issue_history.save()
 		messages.success(request, "Received SUCCESSFULLY. " + str(instance.quantity) + " " + str(instance.item_name)+"s now in Store")
 
 		return redirect('/stock_detail/'+str(instance.id))
 		# return HttpResponseRedirect(instance.get_absolute_url())
 	context = {
-			"title": 'Reaceive ' + str(queryset.item_name),
+			"title": 'Reaceive: ' + str(queryset.category) + " " + str(queryset.item_name),
 			"instance": queryset,
 			"form": form,
 			"username": 'Receive By: ' + str(request.user),
@@ -190,8 +211,8 @@ def list_history(request):
 				'ITEM NAME',
 				'QUANTITY',
 				'ISSUE QUANTITY',
-				'RECEIVE QUANTITY',
-				'ISSUE BY'
+				'RECEIVE QUANTITY', 
+				# 'ISSUE BY',
 				'LAST UPDATED'])
 			instance = queryset
 			for stock in instance:
@@ -201,7 +222,7 @@ def list_history(request):
 				stock.quantity,
 				stock.issue_quantity,
 				stock.receive_quantity,
-				stock.receive_by,
+				# stock.issue_by,
 				stock.last_updated])
 			return response
 

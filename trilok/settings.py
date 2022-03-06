@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%&77^l+7f9j9@9my$wnm0%ci0cfr7ohie)@#f95f#!+^sgr)m%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'trilok.urls'
@@ -90,16 +91,11 @@ DATABASES = {
         'NAME': 'stockmgmt',
         'USER': 'postgres',
         'PASSWORD': 'harvil@2717',
+        'HOST': 'localhost',
+        'PORT': ''
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'stockmgmt',
-#         'USER': 'trilok',
-#         'PASSWORD': 'dhansukh',
-#     }
-# }
+
 
 
 
@@ -140,6 +136,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -152,3 +149,7 @@ LOGIN_REDIRECT_URL = '/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+try:
+    from .local_settings import *
+except ImportError:
+    pass

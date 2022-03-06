@@ -106,6 +106,8 @@
                                     <th>REORDER LEVEL</th>
                                     <!-- <th>TIMESTAMP</th> -->
                                     <th>LAST UPDATED</th>
+                                    <th>ADD STOCK</th>
+                                    <th>ORDER</th>
                                     <th>DELETE</th>
 
                                 </tr>
@@ -128,6 +130,8 @@
                     <td><a href="{% url 'reorder_level' instance.id %}">{{instance.reorder_level}}</a></td>
                     <!-- <td>{{instance.timestamp}}</td> -->
                     <td>{{instance.last_updated}}</td>
+                    <td><a href="{% url 'receive_items' instance.id %}"><img src="{% static 'img/ccdd.png' %}"></a></td>
+                    <td><a href="{% url 'issue_items' instance.id %}"><img src="{% static 'img/ds.png' %}"></a></td>
                     <td><a href="{% url 'delete_items' instance.id %}"><img src="{% static 'img/de.png' %}"> </a></td>
                     </tr>
                     {% endfor %}
@@ -164,3 +168,8 @@
         width: 100%;
     }
 </style>
+
+
+
+
+
