@@ -124,7 +124,6 @@ def issue_items(request, pk):
 			issue_quantity = instance.issue_quantity,
 		)
 		issue_history.save()
-
 		return redirect('/stock_detail/'+str(instance.id))
 		# return HttpResponseRedirect(instance.get_absolute_url())
 
@@ -147,7 +146,7 @@ def receive_items(request, pk):
 		instance.quantity += instance.receive_quantity
 		instance.receive_by = str(request.user)
 		instance.save()
-		issue_history = StockHistory(
+		receive_history = StockHistory(
 			id = instance.id,
 			last_updated = instance.last_updated,
 			category = instance.category,
@@ -156,7 +155,7 @@ def receive_items(request, pk):
 			receive_quantity = instance.receive_quantity,
 			receive_by = instance.receive_by
 		)
-		issue_history.save()
+		receive_history.save()
 		messages.success(request, "Received SUCCESSFULLY. " + str(instance.quantity) + " " + str(instance.item_name)+"s now in Store")
 
 		return redirect('/stock_detail/'+str(instance.id))
