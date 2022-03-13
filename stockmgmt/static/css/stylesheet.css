@@ -6,6 +6,7 @@
     width: 99%;
     margin: auto;
     text-align: center;
+    background-image: url("../img/2.jpg");
   }
 
   /*Make alternating colors for the table rows*/
