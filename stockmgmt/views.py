@@ -188,9 +188,10 @@ def reorder_level(request, pk):
 	return render(request, "add_items.html", context)
 
 
+
 @login_required
 def list_history(request):
-	header = 'LIST OF HISTORY'
+	header = 'LIST OF HISTORY '
 	queryset = StockHistory.objects.all()
 	form = StockSearchForm(request.POST or None)
 	context = {
@@ -235,6 +236,99 @@ def list_history(request):
 	}
 	return render(request, "list_history.html", context)
 
+@login_required
+def stock(request):
+	header = 'LIST OF RECEIVE ITEMS'
+	queryset = StockHistory.objects.all()
+	form = StockSearchForm(request.POST or None)
+	context = {
+		"header": header,
+		"queryset": queryset,
+		"form": form,
+
+	}
+	if request.method == 'POST':
+		queryset = StockHistory.objects.filter(category__icontains=form['category'].value(),
+										item_name__icontains=form['item_name'].value()
+										)
+	
+		if form['export_to_CSV'].value() == True:
+			response = HttpResponse(content_type='text/csv')
+			response['Content-Disposition'] = 'attachment; filename="List of stock.csv"'
+			writer = csv.writer(response)
+			writer.writerow(
+				['CATEGORY',
+				'ITEM NAME',
+				'QUANTITY',
+				# 'ISSUE QUANTITY',
+				'RECEIVE QUANTITY', 
+				# 'ISSUE BY',
+				'LAST UPDATED'])
+			instance = queryset
+			for stock in instance:
+				writer.writerow(
+				[stock.category,
+				stock.item_name,
+				stock.quantity,
+				# stock.issue_quantity,
+				stock.receive_quantity,
+				# stock.issue_by,
+				stock.last_updated])
+			return response
+
+		context = {
+		"form": form,
+		"header": header,
+		"queryset": queryset,
+	}
+	return render(request, "stock.html", context)
+
+@login_required
+def oder(request):
+	header = 'LIST OF ISSUE ITEMS'
+	queryset = StockHistory.objects.all()
+	form = StockSearchForm(request.POST or None)
+	context = {
+		"header": header,
+		"queryset": queryset,
+		"form": form,
+
+	}
+	if request.method == 'POST':
+		queryset = StockHistory.objects.filter(category__icontains=form['category'].value(),
+										item_name__icontains=form['item_name'].value()
+										)
+	
+		if form['export_to_CSV'].value() == True:
+			response = HttpResponse(content_type='text/csv')
+			response['Content-Disposition'] = 'attachment; filename="List of stock.csv"'
+			writer = csv.writer(response)
+			writer.writerow(
+				['CATEGORY',
+				'ITEM NAME',
+				'QUANTITY',
+				'ISSUE QUANTITY',
+				# 'RECEIVE QUANTITY', 
+				# 'ISSUE BY',
+				'LAST UPDATED'])
+			instance = queryset
+			for stock in instance:
+				writer.writerow(
+				[stock.category,
+				stock.item_name,
+				stock.quantity,
+				stock.issue_quantity,
+				# stock.receive_quantity,
+				# stock.issue_by,
+				stock.last_updated])
+			return response
+
+		context = {
+		"form": form,
+		"header": header,
+		"queryset": queryset,
+	}
+	return render(request, "oder.html", context)
 @login_required
 def team(request):
 	# header = 'LIST OF HISTORY'

@@ -32,6 +32,8 @@ urlpatterns = [
     path('receive_items/<str:pk>/', views.receive_items, name="receive_items"),
     path('reorder_level/<str:pk>/', views.reorder_level, name="reorder_level"),
     path('list_history/', views.list_history, name='list_history'),
+    path('stock/', views.stock, name='stock'),
+    path('oder/', views.oder, name='oder'),
     path('team/', views.team, name='team'),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.default.urls')),
