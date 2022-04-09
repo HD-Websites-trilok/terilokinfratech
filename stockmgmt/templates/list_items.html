@@ -104,12 +104,13 @@
                         <input class="btn btn-primary mybutton" type="submit" value='Search'>
                     </form>
                     <br><br>
-                    <a href="/add_items">
-                        <div class="btn btn-primary mybutton">Add Items</div>
-                    </a><br><br>
-                    <a href="/list_history">
-                        <div class="btn btn-primary mybutton">List History</div>
-                    </a><br><br>
+                        <a href="/add_items" class="button_all mybutton">Add Items</a>
+                   <br><br>
+ 
+                    <a href="/list_history" class="button_all mybutton">List History</a>
+
+                    <br><br>
+ 
                     <!-- <a href="/stock">
                         <div class="btn btn-success mybutton">Receive Quantity</div>
                     </a><br>
@@ -198,6 +199,79 @@
 </body>
 
 </html>
+
+
+
+<style>
+    /* Button */
+.button_all {
+  font: 700 12px/45px "Roboto", sans-serif;
+  width: 160px;
+  text-align: center;
+  background: #0b84f6;
+  display: block;
+  border: 0;
+  color: #ffffff;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+  padding: 0;
+}
+.button_all:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-image: url("{% static 'img/b.jpg' %}");
+    /* background: #222222; */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+
+  right: 0;
+  transform: scaleY(0);
+  transform-origin: 50%;
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+.button_all:hover, .button_all:focus {
+  color: rgb(0, 0, 0) !important;
+}
+.button_all:hover:before, .button_all:focus:before {
+  transform: scaleY(1);
+}
+
+/* Section Title*/
+.tittle {
+  text-align: center;
+  text-transform: uppercase;
+}
+.tittle h2 {
+  /*font: 400 24px "Oswald", sans-serif;*/
+  color: #222222;
+  padding-top: 50px;
+  position: relative;
+  font-size:50px;
+  font-family:'Bebas Neue', cursive;;
+}
+.tittle h2:after {
+  content: "";
+  position: absolute;
+  background: #f6b60b;
+  height: 5px;
+  width: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -30px;
+}
+.tittle h4 {
+  font: 400 14px "Roboto", sans-serif;
+  color: #555555;
+  padding-top: 55px;
+}
+
+</style>
 
 <style>
     .success {
@@ -8529,7 +8603,6 @@ h1, h2, h3, h4, h5,
   color: #99b19c; }
   .checkbox-primary input:checked ~ .checkmark:after {
     color: #99b19c; }
-
 
 
 </style>
