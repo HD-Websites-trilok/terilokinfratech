@@ -12,7 +12,7 @@ class StockCreateAdmin(admin.ModelAdmin):
    list_filter = ['category']
    search_fields = ['category', 'item_name']
 
-
+admin.site.register(StockHistory)
 
 admin.site.register(Stock, StockCreateAdmin)
 # admin.site.register(Category) 

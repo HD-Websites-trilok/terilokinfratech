@@ -145,7 +145,7 @@ def receive_items(request, pk):
 	form = ReceiveForm(request.POST or None, instance=queryset)
 	if form.is_valid():
 		instance = form.save(commit=False)
-		instance.issue_quantity = 0
+		# instance.issue_quantity = 0
 		instance.quantity += instance.receive_quantity
 		instance.receive_by = str(request.user)
 		instance.save()
@@ -339,3 +339,4 @@ def team(request):
 	}
 
 	return render(request, "team.html",context)
+	
