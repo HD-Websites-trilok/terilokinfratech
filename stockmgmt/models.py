@@ -1,13 +1,13 @@
 from django.db import models
 
 # Create your models here.
+
 category_choice = (
 		('T-25', 'T-25'),
 		('T-6', 'T-6'),
 		('FT Flume', 'FT Flume'),
 		('Box Drain', 'Box Drain'),
 	)
-
 
 
 class Stock(models.Model):
